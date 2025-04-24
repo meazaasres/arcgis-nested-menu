@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nested Menu for ArcGIS</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #ecf0f1;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: #2c3e50;
+    }
+
+    .menu > li {
+      position: relative;
+    }
+
+    .menu li a {
+      display: block;
+      padding: 12px 18px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .menu li a:hover {
+      background-color: #34495e;
+    }
+
+    .menu li ul {
+      display: none;
+      list-style: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #34495e;
+      min-width: 180px;
+      z-index: 999;
+    }
+
+    .menu li:hover > ul {
+      display: block;
+    }
+
+    .menu li ul li a {
+      padding: 10px 15px;
+      background-color: #34495e;
+    }
+
+    .menu li ul li a:hover {
+      background-color: #3b5998;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">Projects</a>
+        <ul>
+          <li><a href="#">Urban Mapping</a></li>
+          <li><a href="#">Flood Analysis</a></li>
+          <li>
+            <a href="#">Environment</a>
+            <ul>
+              <li><a href="#">Air Quality</a></li>
+              <li><a href="#">Water Quality</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
