@@ -1,15 +1,50 @@
-<label for="menu-select" style="font-family: Arial; font-size: 14px;">Navigate:</label>
-<select id="menu-select" onchange="if(this.value) window.location.href=this.value;" style="padding: 6px 10px; font-size: 14px; font-family: Arial;">
-  <option value="">-- Select a page --</option>
-  <option value="https://example.com/home">Home</option>
-  <optgroup label="Projects">
-    <option value="https://example.com/urban-mapping">Urban Mapping</option>
-    <option value="https://example.com/flood-analysis">Flood Analysis</option>
-    <optgroup label="Environment">
-      <option value="https://example.com/air-quality">Air Quality</option>
-      <option value="https://example.com/water-quality">Water Quality</option>
-    </optgroup>
-  </optgroup>
-  <option value="https://example.com/resources">Resources</option>
-  <option value="https://example.com/contact">Contact</option>
+<label for="main-select" style="font-family: Arial;">Select Category:</label>
+<select id="main-select" style="margin-right: 10px; padding: 6px 10px; font-family: Arial;" onchange="updateSubmenu()">
+  <option value="">-- Choose --</option>
+  <option value="projects">Projects</option>
+  <option value="resources">Resources</option>
+  <option value="contact">Contact</option>
 </select>
+
+<label for="sub-select" style="font-family: Arial;">Select Item:</label>
+<select id="sub-select" style="padding: 6px 10px; font-family: Arial;" onchange="if(this.value) window.location.href=this.value;">
+  <option value="">-- Select an item --</option>
+</select>
+
+<script>
+  const submenuOptions = {
+    projects: [
+      { text: "Urban Mapping", value: "https://example.com/urban-mapping" },
+      { text: "Flood Analysis", value: "https://example.com/flood-analysis" },
+      { text: "Environment - Air Quality", value: "https://example.com/air-quality" },
+      { text: "Environment - Water Quality", value: "https://example.com/water-quality" }
+    ],
+    resources: [
+      { text: "GIS Tools", value: "https://example.com/gis-tools" },
+      { text: "Data Sources", value: "https://example.com/data-sources" }
+    ],
+    contact: [
+      { text: "Email Us", value: "https://example.com/contact" },
+      { text: "Office Location", value: "https://example.com/location" }
+    ]
+  };
+
+  function updateSubmenu() {
+    const mainSelect = document.getElementById("main-select");
+    const subSelect = document.getElementById("sub-select");
+    const selectedCategory = mainSelect.value;
+
+    // Clear previous options
+    subSelect.innerHTML = '<option value="">-- Select an item --</option>';
+
+    // Populate new options
+    if (submenuOptions[selectedCategory]) {
+      submenuOptions[selectedCategory].forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.value;
+        option.textContent = item.text;
+        subSelect.appendChild(option);
+      });
+    }
+  }
+</script>
